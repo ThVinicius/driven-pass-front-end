@@ -11,7 +11,7 @@ const ButtonContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-bottom: 32px;
+  margin-top: 32px;
 `
 
 const Box = styled.div`

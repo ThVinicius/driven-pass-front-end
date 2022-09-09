@@ -1,0 +1,15 @@
+import styled from 'styled-components'
+
+const Container = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h1 {
+    font: normal 400 36px 'Righteous', cursive;
+    color: #005985;
+  }
+`
+
+export { Container }
