@@ -4,5 +4,5 @@ import { Container } from './buttonStyles'
 export default function Button() {
   const navigate = useNavigate()
 
-  return <Container onClick={() => navigate('/')}>&lt; Voltar</Container>
+  return <Container onClick={() => navigate(-1)}>&lt; Voltar</Container>
 }

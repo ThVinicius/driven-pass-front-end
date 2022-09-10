@@ -17,26 +17,30 @@ function sucessCase({ navigate }) {
 }
 
 function failCase(props) {
-  const { res, setSeeking } = props
+  const { res, setResponse, setModalOpen } = props
+
+  let title = 'Cadastro inválido!'
+
+  let message
 
   switch (res.statusText) {
     case 'Bad Request':
-      const error = res.data.reduce((acc, cur) => `${acc}\n` + cur, '')
+      message = res.data.reduce((acc, cur) => `${acc}\n` + cur, '')
 
-      alert(error)
       break
 
     case 'Conflict':
-      const message = 'Esse email já está cadastrado!\nTente outro email'
+      message = 'Esse email já está cadastrado!\nTente outro email'
 
-      alert(message)
       break
 
     default:
-      alert('Ocorreu um erro inesperado!\nTente mais tarde')
+      message = 'Ocorreu um erro inesperado!\nTente mais tarde'
       console.log(res)
       break
   }
 
-  setSeeking(false)
+  setResponse({ title, message })
+
+  setModalOpen(true)
 }

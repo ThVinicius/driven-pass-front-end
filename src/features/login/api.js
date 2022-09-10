@@ -21,25 +21,30 @@ function sucessCase(props) {
 }
 
 function failCase(props) {
-  const { res, setSeeking } = props
+  const { res, setResponse, setModalOpen } = props
+
+  let title = 'Login inválido!'
+
+  let message
 
   switch (res.statusText) {
     case 'Bad Request':
-      const error = res.data.reduce((acc, cur) => `${acc}\n` + cur, '')
+      message = res.data.reduce((acc, cur) => `${acc}\n` + cur, '')
 
-      alert(error)
       break
 
     case 'Unauthorized':
-      const message = 'Email ou senha incorreta'
+      message =
+        'Confira o seu nome de usuário e senha para validar o seu acesso.'
 
-      alert(message)
       break
 
     default:
-      alert('Ocorreu um erro inesperado!\nTente mais tarde')
+      message = 'Ocorreu um erro inesperado!\nTente mais tarde'
       break
   }
 
-  setSeeking(false)
+  setResponse({ title, message })
+
+  setModalOpen(true)
 }

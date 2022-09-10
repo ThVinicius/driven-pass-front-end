@@ -3,15 +3,15 @@ import axios from 'axios'
 import { useGlobal } from '../context/globalContext'
 import API_URL from '../config/api'
 
-function useApi() {
+function useApi(setModalOpen) {
   const { global } = useGlobal()
-  const [seeking, setSeeking] = useState(false)
+  const [response, setResponse] = useState(null)
   const loading = useRef(false)
 
   function fetch(requests, submitToken, sucess, fail, navigate) {
     if (loading.current === true) return
 
-    setSeeking(true)
+    setResponse('loading')
 
     loading.current = true
 
@@ -33,19 +33,19 @@ function useApi() {
 
     Promise.all(promises)
       .then(res => {
-        sucess({ res, setSeeking, global, navigate })
+        sucess({ res, setResponse, global, navigate, setModalOpen })
       })
       .catch(res =>
         fail !== null
-          ? fail({ res: res.response, setSeeking, navigate })
-          : setSeeking(false)
+          ? fail({ res: res.response, setResponse, navigate, setModalOpen })
+          : setResponse(res.response.data)
       )
       .finally(() => {
         loading.current = false
       })
   }
 
-  return [seeking, fetch]
+  return [response, fetch]
 }
 
 export default useApi

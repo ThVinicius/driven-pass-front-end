@@ -6,7 +6,7 @@ export default function Button(props) {
   const { font = "normal 400 18px 'Recursive', sans-serif" } = props
   const { border = '3px solid #9BFBB0' } = props
   const { boxShadow = '0px 4px 4px rgba(0, 0, 0, 0.15)' } = props
-  const { nameLoading, color = '#000000' } = props
+  const { nameLoading, color = '#000000', click = null } = props
 
   function loadingButton() {
     if (loading === false) return { opacity: 1, name }
@@ -19,6 +19,7 @@ export default function Button(props) {
 
   return (
     <Container
+      onClick={click}
       type="submit"
       width={width}
       height={height}

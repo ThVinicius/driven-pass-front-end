@@ -8,5 +8,6 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  position: relative;
 `
 export { Container }

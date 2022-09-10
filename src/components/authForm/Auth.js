@@ -10,14 +10,26 @@ function Auth({ name, email, setEmail, password, setPassword, res, toSubmit }) {
     <Container onSubmit={toSubmit}>
       <Box>
         <h6>Usuário (e-mail)</h6>
-        <Input value={email} onChange={setEmail} loading={res} />
+        <Input
+          value={email}
+          onChange={setEmail}
+          loading={res === 'loading' ? true : false}
+        />
       </Box>
       <Box>
         <h6>Senha</h6>
-        <InputIcon value={password} onChange={setPassword} loading={res} />
+        <InputIcon
+          value={password}
+          onChange={setPassword}
+          loading={res === 'loading' ? true : false}
+        />
       </Box>
       <ButtonContainer>
-        <Button name={name} loading={res} nameLoading={ThreeDotsSpinner} />
+        <Button
+          name={name}
+          loading={res === 'loading' ? true : false}
+          nameLoading={ThreeDotsSpinner}
+        />
         {name === 'Criar' ? <Back /> : null}
       </ButtonContainer>
     </Container>
