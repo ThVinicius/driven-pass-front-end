@@ -1,23 +1,19 @@
 export function configRequest(data) {
-  const url = '/signIn'
+  const url = '/signUp'
 
   const method = 'post'
 
-  const submitToken = false
-
   const requests = [{ url, method, data }]
+
+  const submitToken = false
 
   return [requests, submitToken, sucessCase, failCase]
 }
 
-function sucessCase(props) {
-  const { res, global, navigate } = props
+function sucessCase({ navigate }) {
+  alert('cadastro realizado com sucesso!')
 
-  const [data] = res
-
-  global.token = data.token
-
-  navigate('/home')
+  navigate('/')
 }
 
 function failCase(props) {
@@ -30,14 +26,15 @@ function failCase(props) {
       alert(error)
       break
 
-    case 'Unauthorized':
-      const message = 'Email ou senha incorreta'
+    case 'Conflict':
+      const message = 'Esse email já está cadastrado!\nTente outro email'
 
       alert(message)
       break
 
     default:
       alert('Ocorreu um erro inesperado!\nTente mais tarde')
+      console.log(res)
       break
   }
 

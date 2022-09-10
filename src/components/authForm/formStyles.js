@@ -10,7 +10,9 @@ const Container = styled.form`
 const ButtonContainer = styled.div`
   width: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
   margin-top: 32px;
 `
 

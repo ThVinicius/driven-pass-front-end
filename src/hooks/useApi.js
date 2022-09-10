@@ -3,15 +3,15 @@ import axios from 'axios'
 import { useGlobal } from '../context/globalContext'
 import API_URL from '../config/api'
 
-function useApi(sucess = null, fail = null, submitToken = true) {
+function useApi() {
   const { global } = useGlobal()
-  const [response, setResponse] = useState(null)
+  const [seeking, setSeeking] = useState(false)
   const loading = useRef(false)
 
-  const request = (url, method, data, navigate = null) => {
+  function fetch(requests, submitToken, sucess, fail, navigate) {
     if (loading.current === true) return
 
-    setResponse('loading')
+    setSeeking(true)
 
     loading.current = true
 
@@ -21,28 +21,31 @@ function useApi(sucess = null, fail = null, submitToken = true) {
         }
       : null
 
-    const config = { baseURL: API_URL, url, method, headers, data }
+    const promises = []
 
-    const promise = axios.request(config)
+    for (const request of requests) {
+      const config = { baseURL: API_URL, headers, ...request }
 
-    promise
-      .then(res => res.data)
-      .then(res =>
-        sucess !== null
-          ? sucess({ res, setResponse, global, navigate })
-          : setResponse(res)
+      const promise = axios.request(config)
+
+      promises.push(promise)
+    }
+
+    Promise.all(promises)
+      .then(res => {
+        sucess({ res, setSeeking, global, navigate })
+      })
+      .catch(res =>
+        fail !== null
+          ? fail({ res: res.response, setSeeking, navigate })
+          : setSeeking(false)
       )
-
-    promise
-      .catch(res => res.response)
-      .then(res =>
-        fail !== null ? fail({ res, setResponse, navigate }) : setResponse(null)
-      )
-
-    promise.finally(() => (loading.current = false))
+      .finally(() => {
+        loading.current = false
+      })
   }
 
-  return { response, setResponse, request }
+  return [seeking, fetch]
 }
 
 export default useApi

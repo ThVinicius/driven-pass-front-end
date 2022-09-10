@@ -1,10 +1,12 @@
 import styled from 'styled-components'
 
 const Container = styled.div`
-  width: 100%;
+  width: 420px;
   height: 100%;
+  background-color: #ffffff;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  align-items: center;
+  justify-content: space-between;
 `
 export { Container }
