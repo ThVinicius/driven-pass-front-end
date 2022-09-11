@@ -7,6 +7,9 @@ import SignIn from './features/login/pages/SignIn'
 import SignUp from './features/register/pages/SignUp'
 import Home from './features/home/pages/Home'
 import Credentials from './features/credentials/pages/Credentials'
+import SecureNotes from './features/secureNotes/pages/SecureNotes'
+import Cards from './features/cards/pages/Cards'
+import Wireless from './features/wireless/pages/Wireless'
 
 export default function App() {
   return (
@@ -20,6 +23,9 @@ export default function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/home" element={<Home />} />
           <Route path="/credentials" element={<Credentials />} />
+          <Route path="/secureNotes" element={<SecureNotes />} />
+          <Route path="/cards" element={<Cards />} />
+          <Route path="/wireless" element={<Wireless />} />
         </Routes>
       </GlobalProvider>
     </BrowserRouter>

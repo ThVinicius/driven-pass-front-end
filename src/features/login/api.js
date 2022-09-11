@@ -17,6 +17,8 @@ function sucessCase(props) {
 
   global.token = data.data.token
 
+  localStorage.setItem('token', data.data.token)
+
   navigate('/home')
 }
 

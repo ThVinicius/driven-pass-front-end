@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 const Container = styled.header`
   width: 100vw;
@@ -30,4 +31,8 @@ const Logo = styled.div`
   }
 `
 
-export { Container, Content, Logo }
+const Anchor = styled(Link)`
+  text-decoration: none;
+`
+
+export { Container, Content, Logo, Anchor }

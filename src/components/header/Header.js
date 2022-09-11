@@ -1,6 +1,6 @@
 import usePath from '../../hooks/usePath'
 import { LockClosed, Exit } from '../../assets/icons/icons'
-import { Container, Content, Logo } from './headerStyles'
+import { Container, Content, Logo, Anchor } from './headerStyles'
 
 export default function Header() {
   const { isAuth } = usePath()
@@ -9,10 +9,12 @@ export default function Header() {
     !isAuth && (
       <Container>
         <Content>
-          <Logo>
-            <LockClosed width="45px" height="60px" />
-            <h1>DrivenPass</h1>
-          </Logo>
+          <Anchor to="/home">
+            <Logo>
+              <LockClosed width="45px" height="60px" />
+              <h1>DrivenPass</h1>
+            </Logo>
+          </Anchor>
           <Exit />
         </Content>
       </Container>
