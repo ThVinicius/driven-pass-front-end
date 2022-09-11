@@ -4,10 +4,10 @@ import { IosExit, Pencil, Wallet, Wifi } from '../assets/icons/icons'
 const GlobalContext = createContext()
 
 const myPasswords = [
-  { icon: <IosExit />, length: 1, name: 'Credenciais' },
-  { icon: <Pencil />, length: 2, name: 'Notas seguras' },
-  { icon: <Wallet />, length: 3, name: 'Cartões' },
-  { icon: <Wifi />, length: 4, name: 'Senhas de Wi-fi' }
+  { icon: <IosExit />, name: 'Credenciais', data: null },
+  { icon: <Pencil />, name: 'Notas seguras', data: null },
+  { icon: <Wallet />, name: 'Cartões', data: null },
+  { icon: <Wifi />, name: 'Senhas de Wi-fi', data: null }
 ]
 
 export function GlobalProvider({ children }) {

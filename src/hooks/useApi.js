@@ -4,7 +4,7 @@ import { useGlobal } from '../context/globalContext'
 import API_URL from '../config/api'
 
 function useApi(setModalOpen) {
-  const { global } = useGlobal()
+  const { global, setGlobal } = useGlobal()
   const [response, setResponse] = useState(null)
   const loading = useRef(false)
 
@@ -33,7 +33,7 @@ function useApi(setModalOpen) {
 
     Promise.all(promises)
       .then(res => {
-        sucess({ res, setResponse, global, navigate, setModalOpen })
+        sucess({ res, setResponse, global, setGlobal, navigate, setModalOpen })
       })
       .catch(res =>
         fail !== null

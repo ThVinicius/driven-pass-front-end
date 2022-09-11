@@ -6,9 +6,11 @@ const Container = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
   border: 1px solid #dbdbdb;
   position: absolute;
+  top: 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 2;
 `
 
 const Content = styled.div`

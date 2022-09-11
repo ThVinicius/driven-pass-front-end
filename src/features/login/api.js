@@ -15,7 +15,7 @@ function sucessCase(props) {
 
   const [data] = res
 
-  global.token = data.token
+  global.token = data.data.token
 
   navigate('/home')
 }

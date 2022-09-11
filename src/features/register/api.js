@@ -10,10 +10,16 @@ export function configRequest(data) {
   return [requests, submitToken, sucessCase, failCase]
 }
 
-function sucessCase({ navigate }) {
-  alert('cadastro realizado com sucesso!')
+function sucessCase({ setResponse, setModalOpen }) {
+  const title = 'Cadastro realizado com sucesso!'
 
-  navigate('/')
+  const message = 'Você sera redirecionado para fazer login'
+
+  const nav = '/'
+
+  setResponse({ title, message, nav })
+
+  setModalOpen(true)
 }
 
 function failCase(props) {

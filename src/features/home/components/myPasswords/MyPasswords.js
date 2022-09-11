@@ -1,5 +1,6 @@
 import { useGlobal } from '../../../../context/globalContext'
 import Item from '../item/Item'
+import ItemSkeleton from '../item/ItemSkeleton'
 import { Container, Box, Add } from './myPasswordsStyles'
 
 export default function MyPasswords() {
@@ -8,8 +9,14 @@ export default function MyPasswords() {
   return (
     <Container>
       <Box>
-        {global.myPasswords.map(({ icon, name, length }, index) => (
-          <Item icon={icon} name={name} length={length} key={index} />
+        {global.myPasswords.map(({ icon, name, data }, index) => (
+          <Item
+            icon={icon}
+            name={name}
+            data={data}
+            skeleton={<ItemSkeleton />}
+            key={index}
+          />
         ))}
       </Box>
       <Add>
