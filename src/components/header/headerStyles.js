@@ -5,6 +5,7 @@ const Container = styled.header`
   height: 15.53vh;
   display: flex;
   justify-content: center;
+  background-color: #e9e9e9;
 `
 
 const Content = styled.header`
@@ -14,6 +15,7 @@ const Content = styled.header`
   align-items: center;
   justify-content: space-between;
   padding: 0 10px;
+  background-color: #ffffff;
 `
 
 const Logo = styled.div`
