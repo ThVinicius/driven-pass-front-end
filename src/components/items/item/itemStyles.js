@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 const Container = styled.div`
   width: 100%;
@@ -31,4 +32,8 @@ const Ellipse = styled.div`
   font: normal 400 18px 'Recursive', sans-serif;
 `
 
-export { Container, Title, Ellipse }
+const Anchor = styled(Link)`
+  text-decoration: none;
+`
+
+export { Container, Title, Ellipse, Anchor }

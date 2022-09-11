@@ -2,7 +2,7 @@ import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import { Container, Title } from './itemStyles'
 
-export default function ItemSkeleton() {
+export default function ItemSkeleton({ data }) {
   return (
     <Container>
       <Title>
@@ -11,7 +11,7 @@ export default function ItemSkeleton() {
           <Skeleton width={140} />
         </h1>
       </Title>
-      <Skeleton circle width="40px" height="40px" />
+      {data !== undefined && <Skeleton circle width="40px" height="40px" />}
     </Container>
   )
 }
