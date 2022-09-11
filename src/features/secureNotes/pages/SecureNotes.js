@@ -9,6 +9,7 @@ import ContentContainer from '../../../containers/appContent/ContentContainer'
 import Info from '../../../components/info/Info'
 import Content from '../../../containers/content/Content'
 import MyPasswords from '../../../components/items/myPasswords/MyPasswords'
+import Footer from '../../../components/footer/Footer'
 import { Pencil } from '../../../assets/icons/icons'
 
 export default function SecureNotes() {
@@ -22,14 +23,16 @@ export default function SecureNotes() {
     <AppContainer>
       <Modal modalOpen={modalOpen} setModalOpen={setModalOpen} msg={response} />
       <ContentContainer>
-        <Info name="Minhas notas seguras" />
+        <Info name="Notas seguras" />
         <Content>
           <MyPasswords
             array={global.myPasswords[1].data}
             icons={<Pencil />}
             dir="/secureNotes"
             totalSkeleton={false}
-          />
+          >
+            <Footer />
+          </MyPasswords>
         </Content>
       </ContentContainer>
     </AppContainer>

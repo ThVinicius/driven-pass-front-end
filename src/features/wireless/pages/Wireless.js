@@ -9,6 +9,7 @@ import ContentContainer from '../../../containers/appContent/ContentContainer'
 import Info from '../../../components/info/Info'
 import Content from '../../../containers/content/Content'
 import MyPasswords from '../../../components/items/myPasswords/MyPasswords'
+import Footer from '../../../components/footer/Footer'
 import { Wifi } from '../../../assets/icons/icons'
 
 export default function Wireless() {
@@ -22,14 +23,16 @@ export default function Wireless() {
     <AppContainer>
       <Modal modalOpen={modalOpen} setModalOpen={setModalOpen} msg={response} />
       <ContentContainer>
-        <Info name="Meus WiFi" />
+        <Info name="Wireless" />
         <Content>
           <MyPasswords
             array={global.myPasswords[3].data}
             icons={<Wifi />}
             dir="/wireless"
             totalSkeleton={false}
-          />
+          >
+            <Footer />
+          </MyPasswords>
         </Content>
       </ContentContainer>
     </AppContainer>

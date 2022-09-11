@@ -9,6 +9,7 @@ import ContentContainer from '../../../containers/appContent/ContentContainer'
 import Info from '../../../components/info/Info'
 import Content from '../../../containers/content/Content'
 import MyPasswords from '../../../components/items/myPasswords/MyPasswords'
+import Footer from '../../../components/footer/Footer'
 import { Wallet } from '../../../assets/icons/icons'
 
 export default function Cards() {
@@ -22,14 +23,16 @@ export default function Cards() {
     <AppContainer>
       <Modal modalOpen={modalOpen} setModalOpen={setModalOpen} msg={response} />
       <ContentContainer>
-        <Info name="Meus cartões" />
+        <Info name="Cartões" />
         <Content>
           <MyPasswords
             array={global.myPasswords[2].data}
             icons={<Wallet />}
             dir="/cards"
             totalSkeleton={false}
-          />
+          >
+            <Footer />
+          </MyPasswords>
         </Content>
       </ContentContainer>
     </AppContainer>

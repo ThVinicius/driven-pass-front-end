@@ -9,6 +9,7 @@ import ContentContainer from '../../../containers/appContent/ContentContainer'
 import Info from '../../../components/info/Info'
 import Content from '../../../containers/content/Content'
 import MyPasswords from '../../../components/items/myPasswords/MyPasswords'
+import Footer from '../../../components/footer/Footer'
 
 export default function Home() {
   const [modalOpen, setModalOpen] = useModal()
@@ -23,7 +24,9 @@ export default function Home() {
       <ContentContainer>
         <Info name="Minhas senhas" />
         <Content>
-          <MyPasswords array={global.myPasswords} totalSkeleton={true} />
+          <MyPasswords array={global.myPasswords} totalSkeleton={true}>
+            <Footer />
+          </MyPasswords>
         </Content>
       </ContentContainer>
     </AppContainer>

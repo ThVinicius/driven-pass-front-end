@@ -1,6 +1,6 @@
 import Item from '../item/Item'
 import ItemSkeleton from '../item/ItemSkeleton'
-import { Container, Box, Add } from './myPasswordsStyles'
+import { Container, Box, Add, Anchor } from './myPasswordsStyles'
 
 const arrayNull = [
   { data: null },
@@ -9,7 +9,7 @@ const arrayNull = [
   { data: null }
 ]
 
-export default function MyPasswords({ array, icons, dir, totalSkeleton }) {
+function MyPasswords({ array, icons, dir, totalSkeleton, children }) {
   const items =
     array !== null
       ? array.map(({ icon = icons, label, data, id, to }, index) => {
@@ -37,9 +37,9 @@ export default function MyPasswords({ array, icons, dir, totalSkeleton }) {
   return (
     <Container>
       <Box>{items}</Box>
-      <Add>
-        <div>+</div>
-      </Add>
+      {children}
     </Container>
   )
 }
+
+export default MyPasswords

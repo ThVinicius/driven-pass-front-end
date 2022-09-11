@@ -9,6 +9,7 @@ import ContentContainer from '../../../containers/appContent/ContentContainer'
 import Info from '../../../components/info/Info'
 import Content from '../../../containers/content/Content'
 import MyPasswords from '../../../components/items/myPasswords/MyPasswords'
+import Footer from '../../../components/footer/Footer'
 import { Exit } from '../../../assets/icons/icons'
 
 export default function Credentials() {
@@ -22,14 +23,16 @@ export default function Credentials() {
     <AppContainer>
       <Modal modalOpen={modalOpen} setModalOpen={setModalOpen} msg={response} />
       <ContentContainer>
-        <Info name="Minhas credenciais" />
+        <Info name="Credenciais" />
         <Content>
           <MyPasswords
             array={global.myPasswords[0].data}
             icons={<Exit />}
             dir="/credentials"
             totalSkeleton={false}
-          />
+          >
+            <Footer />
+          </MyPasswords>
         </Content>
       </ContentContainer>
     </AppContainer>
