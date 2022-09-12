@@ -8,6 +8,7 @@ import { Container, Title, InputsBox, InputBox, Radio } from './formStyles'
 import Input from '../../../../components/input/Input'
 import InputIcon from '../../../../components/inputIcon/InputIcon'
 import Footer from '../footer/Footer'
+import { maskNumber, maskExpiration } from '../../../../utils/cardMask'
 
 export default function CardsForm() {
   const [label, setLabel] = useState('')
@@ -28,7 +29,8 @@ export default function CardsForm() {
       setCardholderName,
       setSecurityCode,
       setExpirationDate,
-      setVirtual
+      setVirtual,
+      setPassword
     ],
     response
   )
@@ -72,7 +74,7 @@ export default function CardsForm() {
             width="100%"
             maxLength={19}
             minLength={19}
-            value={number}
+            value={maskNumber(number)}
             onChange={setNumber}
             loading={response === 'loading' ? true : false}
           />
@@ -98,10 +100,10 @@ export default function CardsForm() {
           />
         </InputBox>
         <InputBox>
-          <h2>Data de expiração (formato: MM/YY)</h2>
+          <h2>Data de expiração</h2>
           <Input
             width="100%"
-            value={expirationDate}
+            value={maskExpiration(expirationDate)}
             maxLength={5}
             minLength={5}
             onChange={setExpirationDate}
