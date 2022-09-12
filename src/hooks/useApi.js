@@ -23,7 +23,13 @@ function useApi(setModalOpen) {
 
     const promises = []
 
+    let id
+
     for (const request of requests) {
+      const url = request.url
+
+      id = Number(url.slice(url.indexOf('/', 1) + 1))
+
       const config = { baseURL: API_URL, headers, ...request }
 
       const promise = axios.request(config)
@@ -33,7 +39,15 @@ function useApi(setModalOpen) {
 
     Promise.all(promises)
       .then(res => {
-        sucess({ res, setResponse, global, setGlobal, navigate, setModalOpen })
+        sucess({
+          res,
+          setResponse,
+          global,
+          setGlobal,
+          navigate,
+          setModalOpen,
+          id
+        })
       })
       .catch(res =>
         fail !== null

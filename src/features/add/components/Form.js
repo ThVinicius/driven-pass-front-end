@@ -3,11 +3,14 @@ import CredentialsForm from './credentialsForm/CredentialsForm'
 import SecureNotesForm from './secureNotesForm/SecureNotesForm'
 import CardsForm from './cardsForm/CardsForm'
 import WirelessForm from './wirelessForm/WirelessForm'
+import page from '../../../assets/images/page.png'
 
 export default function Form() {
   const { name } = useParams()
 
-  switch (name) {
+  const compare = name.toLowerCase()
+
+  switch (compare) {
     case 'credentials':
       return <CredentialsForm />
 
@@ -21,6 +24,12 @@ export default function Form() {
       return <WirelessForm />
 
     default:
-      break
+      return (
+        <img
+          style={{ width: '100%', height: '100%' }}
+          src={page}
+          alt="Not Found"
+        />
+      )
   }
 }

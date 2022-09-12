@@ -7,12 +7,8 @@ export default function View({ data, children }) {
       <Box>
         <Label>{data.label}</Label>
         <Content>
-          <h1>URL</h1>
-          <h2>{data.url}</h2>
-        </Content>
-        <Content>
-          <h1>Usuário</h1>
-          <h2>{data.username}</h2>
+          <h1>Nome da rede</h1>
+          <h2>{data.networkName}</h2>
         </Content>
         <Content>
           <h1>Senha</h1>
@@ -22,6 +18,6 @@ export default function View({ data, children }) {
       {children}
     </Container>
   ) : (
-    <ViewSkeleton qtd={3} />
+    <ViewSkeleton qtd={2} />
   )
 }

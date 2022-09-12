@@ -16,14 +16,14 @@ import View from '../components/view/View'
 import msg from '../../../utils/msg'
 import page from '../../../assets/images/page.png'
 
-export default function Credential() {
+export default function Card() {
   const { id } = useParams()
   const [modalOpen, setModalOpen] = useModal()
   const [response, fetch] = useApi(setModalOpen)
   const { global } = useGlobal()
-  const data = useMap(global.myPasswords[0].data, Number(id))
+  const data = useMap(global.myPasswords[2].data, Number(id))
 
-  usePersistence(fetch, request(), global.myPasswords[0].data)
+  usePersistence(fetch, request(), global.myPasswords[2].data)
 
   return (
     <AppContainer>
@@ -36,7 +36,7 @@ export default function Credential() {
         req={configRequest}
       />
       <ContentContainer>
-        <Info name="Credenciais" />
+        <Info name="Cartões" />
         <Content>
           {data !== 'Not Found' ? (
             <View data={data}>

@@ -1,38 +1,54 @@
+import { useParams } from 'react-router-dom'
 import { useGlobal } from '../../../context/globalContext'
 import useApi from '../../../hooks/useApi'
 import { request } from '../../home/api'
+import { configReq } from '../api'
 import usePersistence from '../../../hooks/usePersistence'
 import Modal from '../../../components/modal/main/Modal'
 import useModal from '../../../hooks/useModal'
+import useMap from '../../../hooks/useMap'
 import AppContainer from '../../../containers/app/AppContainer'
 import ContentContainer from '../../../containers/appContent/ContentContainer'
 import Info from '../../../components/info/Info'
 import Content from '../../../containers/content/Content'
-import MyPasswords from '../../../components/items/myPasswords/MyPasswords'
 import Footer from '../../../components/footer/Footer'
-import { Pencil } from '../../../assets/icons/icons'
+import View from '../components/view/View'
+import msg from '../../../utils/msg'
+import page from '../../../assets/images/page.png'
 
-export default function SecureNotes() {
-  const { global } = useGlobal()
+export default function SecureNote() {
+  const { id } = useParams()
   const [modalOpen, setModalOpen] = useModal()
   const [response, fetch] = useApi(setModalOpen)
+  const { global } = useGlobal()
+  const data = useMap(global.myPasswords[1].data, Number(id))
 
   usePersistence(fetch, request(), global.myPasswords[1].data)
 
   return (
     <AppContainer>
-      <Modal modalOpen={modalOpen} setModalOpen={setModalOpen} msg={response} />
+      <Modal
+        modalOpen={modalOpen}
+        setModalOpen={setModalOpen}
+        msg={msg(data?.label, response, data)}
+        fetch={fetch}
+        id={data?.id}
+        req={configReq}
+      />
       <ContentContainer>
         <Info name="Notas seguras" />
         <Content>
-          <MyPasswords
-            array={global.myPasswords[1].data}
-            icons={<Pencil />}
-            dir="/secureNotes"
-            totalSkeleton={false}
-          >
-            <Footer />
-          </MyPasswords>
+          {data !== 'Not Found' ? (
+            <View data={data}>
+              <Footer back={true} modal={setModalOpen} />
+            </View>
+          ) : (
+            <img
+              style={{ width: '100%', height: '100%' }}
+              src={page}
+              alt="Not Found"
+            />
+          )}
         </Content>
       </ContentContainer>
     </AppContainer>

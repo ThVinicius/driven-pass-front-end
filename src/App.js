@@ -13,6 +13,9 @@ import Wireless from './features/wireless/pages/Wireless'
 import Main from './features/add/pages/Main'
 import Add from './features/add/pages/Add'
 import Credential from './features/credentials/pages/Credential'
+import SecureNote from './features/secureNotes/pages/SecureNote'
+import Card from './features/cards/pages/Card'
+import WiFi from './features/wireless/pages/WiFi'
 
 export default function App() {
   return (
@@ -32,6 +35,9 @@ export default function App() {
           <Route path="/add" element={<Main />} />
           <Route path="/add/:name" element={<Add />} />
           <Route exact path="/credentials/:id" element={<Credential />} />
+          <Route exact path="/secureNotes/:id" element={<SecureNote />} />
+          <Route exact path="/cards/:id" element={<Card />} />
+          <Route exact path="/wireless/:id" element={<WiFi />} />
         </Routes>
       </GlobalProvider>
     </BrowserRouter>

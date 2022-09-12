@@ -12,7 +12,7 @@ export default function Footer({ back = false, modal = null }) {
           <Add>+</Add>
         </Anchor>
       ) : (
-        <Remove>x</Remove>
+        <Remove onClick={() => modal(true)}>x</Remove>
       )}
     </Container>
   )

@@ -1,29 +1,31 @@
-export function request() {
+export function configRequest(id) {
+  const url = `/wireless/${id}`
+
+  const method = 'delete'
+
   const submitToken = true
 
-  const credentials = { url: '/credentials', method: 'get' }
-
-  const secureNotes = { url: '/secureNotes', method: 'get' }
-
-  const cards = { url: '/cards', method: 'get' }
-
-  const wireless = { url: '/wireless', method: 'get' }
-
-  const requests = [credentials, secureNotes, cards, wireless]
+  const requests = [{ url, method }]
 
   return [requests, submitToken, sucessCase, failCase]
 }
 
 function sucessCase(props) {
-  const { res, global, setGlobal } = props
+  const { global, setResponse, id } = props
 
-  globalPopulation(global, res)
+  const title = 'Deletado com sucesso!'
 
-  setGlobal({ ...global })
+  const nav = -1
+
+  global.myPasswords[3].data = global.myPasswords[3].data.filter(
+    item => item.id !== id
+  )
+
+  setResponse({ title, nav })
 }
 
 function failCase(props) {
-  const { res, setResponse, setModalOpen } = props
+  const { res, setResponse } = props
 
   const nav = '/'
 
@@ -55,12 +57,4 @@ function failCase(props) {
   }
 
   setResponse({ title, message, nav })
-
-  setModalOpen(true)
-}
-
-function globalPopulation(global, res) {
-  res.forEach(({ data }, index) => {
-    global.myPasswords[index].data = data
-  })
 }

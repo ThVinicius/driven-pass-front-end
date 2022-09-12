@@ -9,7 +9,13 @@ export function request(data) {
 }
 
 function sucessCase(props) {
-  const { setResponse, setModalOpen } = props
+  const { res, global, setResponse, setModalOpen } = props
+
+  if (global.myPasswords[1].data !== null) {
+    const [data] = res
+
+    global.myPasswords[1].data = [...global.myPasswords[1].data, data.data]
+  }
 
   const title = 'Muito bem!'
 

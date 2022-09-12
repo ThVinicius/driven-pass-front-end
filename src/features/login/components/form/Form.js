@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import useApi from '../../../../hooks/useApi'
 import { configRequest } from '../../api'
 import Auth from '../../../../components/authForm/Auth'
-import Modal from '../../../../components/modal/Modal'
+import Modal from '../../../../components/modal/main/Modal'
 import useModal from '../../../../hooks/useModal'
 
 export default function Form() {
