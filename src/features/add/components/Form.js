@@ -1,5 +1,8 @@
 import { useParams } from 'react-router-dom'
 import CredentialsForm from './credentialsForm/CredentialsForm'
+import SecureNotesForm from './secureNotesForm/SecureNotesForm'
+import CardsForm from './cardsForm/CardsForm'
+import WirelessForm from './wirelessForm/WirelessForm'
 
 export default function Form() {
   const { name } = useParams()
@@ -9,13 +12,13 @@ export default function Form() {
       return <CredentialsForm />
 
     case 'securenotes':
-      break
+      return <SecureNotesForm />
 
     case 'cards':
-      break
+      return <CardsForm />
 
     case 'wireless':
-      break
+      return <WirelessForm />
 
     default:
       break

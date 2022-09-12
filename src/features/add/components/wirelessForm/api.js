@@ -1,9 +1,9 @@
 export function request(data) {
   const submitToken = true
 
-  const credentials = { url: '/credentials', method: 'post', data }
+  const wireless = { url: '/wireless', method: 'post', data }
 
-  const requests = [credentials]
+  const requests = [wireless]
 
   return [requests, submitToken, sucessCase, failCase]
 }
@@ -23,13 +23,15 @@ function sucessCase(props) {
 function failCase(props) {
   const { res, setResponse, setModalOpen } = props
 
-  const title = 'Autenticação inválida!'
+  let title = 'Autenticação inválida!'
 
   let message
 
   switch (res.statusText) {
     case 'Bad Request':
       message = res.data.reduce((acc, cur) => `${acc}\n` + cur, '')
+
+      title = 'Dados incorretos!'
 
       break
 

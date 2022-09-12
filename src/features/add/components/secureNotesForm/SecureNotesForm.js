@@ -6,23 +6,21 @@ import Modal from '../../../../components/modal/Modal'
 import useClean from '../../../../hooks/useClean'
 import { Container, Title, InputsBox, InputBox } from './formStyles'
 import Input from '../../../../components/input/Input'
-import InputIcon from '../../../../components/inputIcon/InputIcon'
 import Footer from '../footer/Footer'
 
-export default function CredentialsForm() {
+export default function SecureNotesForm() {
   const [label, setLabel] = useState('')
-  const [url, setUrl] = useState('')
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
+  const [title, setTitle] = useState('')
+  const [annotation, setAnnotation] = useState('')
   const [modalOpen, setModalOpen] = useModal()
   const [response, fetch] = useApi(setModalOpen)
 
-  useClean([setLabel, setUrl, setUsername, setPassword], response)
+  useClean([setLabel, setTitle, setAnnotation], response)
 
   const submit = event => {
     event.preventDefault()
 
-    const data = { label, url, username, password }
+    const data = { label, title, annotation }
 
     fetch(...request(data))
   }
@@ -33,7 +31,7 @@ export default function CredentialsForm() {
       <InputsBox>
         <Title>Cadastro</Title>
         <InputBox>
-          <h2>Título</h2>
+          <h2>Rótulo</h2>
           <Input
             width="100%"
             value={label}
@@ -42,30 +40,22 @@ export default function CredentialsForm() {
           />
         </InputBox>
         <InputBox>
-          <h2>URL</h2>
+          <h2>Título</h2>
           <Input
-            type="url"
             width="100%"
-            value={url}
-            onChange={setUrl}
+            maxLength={50}
+            value={title}
+            onChange={setTitle}
             loading={response === 'loading' ? true : false}
           />
         </InputBox>
         <InputBox>
-          <h2>Usuário</h2>
+          <h2>Anotação</h2>
           <Input
             width="100%"
-            value={username}
-            onChange={setUsername}
-            loading={response === 'loading' ? true : false}
-          />
-        </InputBox>
-        <InputBox>
-          <h2>Senha</h2>
-          <InputIcon
-            width="100%"
-            value={password}
-            onChange={setPassword}
+            maxLength={1000}
+            value={annotation}
+            onChange={setAnnotation}
             loading={response === 'loading' ? true : false}
           />
         </InputBox>

@@ -9,20 +9,19 @@ import Input from '../../../../components/input/Input'
 import InputIcon from '../../../../components/inputIcon/InputIcon'
 import Footer from '../footer/Footer'
 
-export default function CredentialsForm() {
+export default function WirelessForm() {
   const [label, setLabel] = useState('')
-  const [url, setUrl] = useState('')
-  const [username, setUsername] = useState('')
+  const [networkName, setNetworkName] = useState('')
   const [password, setPassword] = useState('')
   const [modalOpen, setModalOpen] = useModal()
   const [response, fetch] = useApi(setModalOpen)
 
-  useClean([setLabel, setUrl, setUsername, setPassword], response)
+  useClean([setLabel, setNetworkName, setPassword], response)
 
   const submit = event => {
     event.preventDefault()
 
-    const data = { label, url, username, password }
+    const data = { label, networkName, password }
 
     fetch(...request(data))
   }
@@ -42,26 +41,16 @@ export default function CredentialsForm() {
           />
         </InputBox>
         <InputBox>
-          <h2>URL</h2>
+          <h2>Nome da rede</h2>
           <Input
-            type="url"
             width="100%"
-            value={url}
-            onChange={setUrl}
+            value={networkName}
+            onChange={setNetworkName}
             loading={response === 'loading' ? true : false}
           />
         </InputBox>
         <InputBox>
-          <h2>Usuário</h2>
-          <Input
-            width="100%"
-            value={username}
-            onChange={setUsername}
-            loading={response === 'loading' ? true : false}
-          />
-        </InputBox>
-        <InputBox>
-          <h2>Senha</h2>
+          <h2>Senha da rede</h2>
           <InputIcon
             width="100%"
             value={password}
