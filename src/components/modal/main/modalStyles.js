@@ -11,6 +11,10 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 2;
+
+  @media (max-width: 420px) {
+    width: 100vw;
+  }
 `
 
 const Content = styled.div`

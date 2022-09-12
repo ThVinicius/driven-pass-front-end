@@ -17,6 +17,10 @@ const Content = styled.header`
   justify-content: space-between;
   padding: 0 10px;
   background-color: #ffffff;
+
+  @media (max-width: 420px) {
+    width: 100vw;
+  }
 `
 
 const Logo = styled.div`
