@@ -1,6 +1,6 @@
 import Item from '../item/Item'
 import ItemSkeleton from '../item/ItemSkeleton'
-import { Container, Box, Add, Anchor } from './myPasswordsStyles'
+import { Container, Box } from './myPasswordsStyles'
 
 const arrayNull = [
   { data: null },

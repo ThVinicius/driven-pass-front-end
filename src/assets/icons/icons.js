@@ -4,7 +4,8 @@ import {
   IoExit,
   IoPencil,
   IoWallet,
-  IoWifi
+  IoWifi,
+  IoCheckmarkCircleSharp
 } from 'react-icons/io5'
 import { IoIosExit } from 'react-icons/io'
 
@@ -43,4 +44,10 @@ const Wifi = styled(IoWifi)`
   color: #005985;
 `
 
-export { LockClosed, Exit, IosExit, Pencil, Wallet, Wifi }
+const Checkmark = styled(IoCheckmarkCircleSharp)`
+  width: 60px;
+  height: 60px;
+  color: #9bfbb0;
+`
+
+export { LockClosed, Exit, IosExit, Pencil, Wallet, Wifi, Checkmark }

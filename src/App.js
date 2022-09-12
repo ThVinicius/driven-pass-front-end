@@ -10,6 +10,7 @@ import Credentials from './features/credentials/pages/Credentials'
 import SecureNotes from './features/secureNotes/pages/SecureNotes'
 import Cards from './features/cards/pages/Cards'
 import Wireless from './features/wireless/pages/Wireless'
+import Main from './features/add/pages/Main'
 import Add from './features/add/pages/Add'
 
 export default function App() {
@@ -27,7 +28,8 @@ export default function App() {
           <Route path="/secureNotes" element={<SecureNotes />} />
           <Route path="/cards" element={<Cards />} />
           <Route path="/wireless" element={<Wireless />} />
-          <Route path="/add" element={<Add />} />
+          <Route path="/add" element={<Main />} />
+          <Route path="/add/:name" element={<Add />} />
         </Routes>
       </GlobalProvider>
     </BrowserRouter>
