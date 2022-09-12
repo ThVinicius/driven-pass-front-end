@@ -21,6 +21,18 @@ const Add = styled.div`
   align-items: center;
 `
 
+const Remove = styled.div`
+  width: 61px;
+  height: 61px;
+  border-radius: 35px;
+  background-color: #f52424;
+  font: normal 400 38px 'Recursive', sans-serif;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
 const Anchor = styled(Link)`
   text-decoration: none;
 `
@@ -32,4 +44,4 @@ const Back = styled.h5`
   cursor: pointer;
 `
 
-export { Container, Anchor, Add, Back }
+export { Container, Anchor, Add, Back, Remove }

@@ -12,6 +12,7 @@ import Cards from './features/cards/pages/Cards'
 import Wireless from './features/wireless/pages/Wireless'
 import Main from './features/add/pages/Main'
 import Add from './features/add/pages/Add'
+import Credential from './features/credentials/pages/Credential'
 
 export default function App() {
   return (
@@ -24,12 +25,13 @@ export default function App() {
           <Route path="/" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/home" element={<Home />} />
-          <Route path="/credentials" element={<Credentials />} />
+          <Route exact path="/credentials" element={<Credentials />} />
           <Route path="/secureNotes" element={<SecureNotes />} />
           <Route path="/cards" element={<Cards />} />
           <Route path="/wireless" element={<Wireless />} />
           <Route path="/add" element={<Main />} />
           <Route path="/add/:name" element={<Add />} />
+          <Route exact path="/credentials/:id" element={<Credential />} />
         </Routes>
       </GlobalProvider>
     </BrowserRouter>

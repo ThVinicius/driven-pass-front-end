@@ -18,6 +18,7 @@ const Exit = styled(IoExit)`
   width: 53px;
   height: 60px;
   color: #005985;
+  cursor: pointer;
 `
 
 const IosExit = styled(IoIosExit)`
