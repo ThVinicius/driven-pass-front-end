@@ -4,7 +4,6 @@ const Container = styled.form`
   width: 100%;
   height: 100%;
   overflow-y: auto;
-  padding: 15px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -16,6 +15,7 @@ const Title = styled.h1`
 `
 const InputsBox = styled.div`
   width: 100%;
+  padding: 15px;
   display: flex;
   flex-direction: column;
   gap: 10px;
